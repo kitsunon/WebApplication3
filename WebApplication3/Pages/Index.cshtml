@@ -1,0 +1,48 @@
+﻿@page
+@model IndexModel
+@using WebApplication3.Model;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@{
+    if (SignInManager.IsSignedIn(User))
+    {
+        <div>
+            <h2>User Data</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Credit Card</th>
+                        <th>Mobile No</th>
+                        <th>Billing Address</th>
+                        <th>Shipping Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.CurrentUser.UserName</td>
+                        <td>@Model.CurrentUser.Email</td>
+                        <td>@Model.CurrentUser.FirstName</td>
+                        <td>@Model.CurrentUser.LastName</td>
+                        <td>@Model.CurrentUser.CreditCard</td>
+                        <td>@Model.CurrentUser.MobileNo</td>
+                        <td>@Model.CurrentUser.BillingAddress</td>
+                        <td>@Model.CurrentUser.ShippingAddress</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+}
